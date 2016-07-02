@@ -54,6 +54,9 @@
                                     <constraint firstAttribute="height" constant="30" id="pe5-4Y-i9e"/>
                                 </constraints>
                                 <state key="normal" title="Run"/>
+                                <connections>
+                                    <action selector="runBtn:" destination="fkL-K5-MU0" eventType="touchUpInside" id="StK-jz-uf1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -69,6 +72,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Uf9-z6-XdH"/>
+                    <connections>
+                        <outlet property="txtBox" destination="Zyi-Jb-W1Q" id="DW1-rq-oCI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rg-Bg-pfM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

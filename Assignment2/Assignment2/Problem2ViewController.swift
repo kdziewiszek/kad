@@ -17,6 +17,10 @@ class Problem2ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBOutlet weak var txtBox: UITextView!
+    @IBAction func runBtn(sender: AnyObject) {
+        txtBox.text = "here is some text"
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
