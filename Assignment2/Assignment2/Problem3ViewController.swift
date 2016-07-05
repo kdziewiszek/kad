@@ -10,11 +10,27 @@ import UIKit
 
 class Problem3ViewController: UIViewController {
 
+    @IBOutlet weak var txt3: UITextView!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Problem 3"
         // Do any additional setup after loading the view.
     }
+    
+
+    @IBAction func btn3(sender: AnyObject)
+    {
+        let newmy2D = prob3(height: 10, width: 10)
+        let b = newmy2D.step(newmy2D.twoDimArrayOfInt)
+        
+        if let n = newmy2D.countLive(b){
+            txt3.text = String(n)
+        }
+        
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

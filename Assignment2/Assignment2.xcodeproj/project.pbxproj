@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A590A3D1D2987060084CFD7 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A590A3C1D2987060084CFD7 /* Engine.swift */; };
+		3A590A7B1D2B87830084CFD7 /* Engine2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A590A7A1D2B87830084CFD7 /* Engine2.swift */; };
 		3A635D6C1D2731E700477225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A635D6B1D2731E700477225 /* AppDelegate.swift */; };
 		3A635D6E1D2731E700477225 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A635D6D1D2731E700477225 /* MainController.swift */; };
 		3A635D711D2731E700477225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A635D6F1D2731E700477225 /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A590A3C1D2987060084CFD7 /* Engine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
+		3A590A7A1D2B87830084CFD7 /* Engine2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Engine2.swift; sourceTree = "<group>"; };
 		3A635D681D2731E700477225 /* Assignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A635D6B1D2731E700477225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A635D6D1D2731E700477225 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 				3A635D721D2731E700477225 /* Assets.xcassets */,
 				3A635D741D2731E700477225 /* LaunchScreen.storyboard */,
 				3A635D771D2731E700477225 /* Info.plist */,
+				3A590A3C1D2987060084CFD7 /* Engine.swift */,
+				3A590A7A1D2B87830084CFD7 /* Engine2.swift */,
 			);
 			path = Assignment2;
 			sourceTree = "<group>";
@@ -271,6 +277,8 @@
 				3AF374141D281FB500E1DFD3 /* Problem4ViewController.swift in Sources */,
 				3AF374121D281FA400E1DFD3 /* Problem3ViewController.swift in Sources */,
 				3A635D6C1D2731E700477225 /* AppDelegate.swift in Sources */,
+				3A590A7B1D2B87830084CFD7 /* Engine2.swift in Sources */,
+				3A590A3D1D2987060084CFD7 /* Engine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
