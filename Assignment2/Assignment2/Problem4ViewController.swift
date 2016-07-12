@@ -19,7 +19,7 @@ class Problem4ViewController: UIViewController {
     @IBAction func btn4(sender: AnyObject) {
         let newmy2D4 = prob4(height: 5, width: 5)
         let b = newmy2D4.step2(newmy2D4.twoDimArrayOfInt)
-        
+        print (newmy2D4)
         if let n = newmy2D4.countLive(b){
             txt4.text = String(n)
         }
