@@ -14,9 +14,9 @@ protocol EngineProtocol {
     var grid: GridProtocol! {get}
     var refreshRate: Double {get set}
     var refreshTimer:NSTimer? { get set }
-    var rows: UInt { get set }
-    var cols: UInt { get set }
-    init(_rows:UInt, _cols:UInt)
+    var rows: Int { get set }
+    var cols: Int { get set }
+    init(_rows:Int, _cols:Int)
     func step() -> GridProtocol
 }
 

@@ -40,13 +40,15 @@ import UIKit
     @IBInspectable var rows: Int = 20 {
         didSet{
             _ = t(rows, width: 20)
+           //grid = Grid(_rows: 20, _cols: columns) { .empty }
             // _ = engine(height: rows, width: 20)
         }
     }
     @IBInspectable var columns: Int = 20{
         didSet{
             //r(20, width_: columns)
-            _ = t(20, width: columns)
+           _ = t(20, width: columns)
+            // didset and notifydelegate()
             // _ = engine(height: 20, width: columns)
         }
     }
@@ -58,7 +60,7 @@ import UIKit
     @IBInspectable var diedColor: UIColor = UIColor.grayColor()
     @IBInspectable var gridColor: UIColor = UIColor.blackColor()
     @IBInspectable var gridWidth: CGFloat = CGFloat(2.0)
-    var global=""
+    
     
     
     func ReadGrid(r:Int,c:Int){

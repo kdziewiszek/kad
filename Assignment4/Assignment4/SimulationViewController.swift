@@ -10,25 +10,25 @@ import UIKit
 
 class SimulationViewController: UIViewController {
 
-    var example: StandardEngine!
+    
 
     @IBOutlet weak var gv: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(gv)
-        
+        SimulationViewController.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     
-    func EngineNotification() {
-        gv.setNeedsDisplay()
-    }
+    
 }
 
     @IBAction func myBtn(sender: AnyObject) {
         let arr = GridView()//initialization of classes
-        let grid = arr.grid
-        
-        
+        var grid = arr.grid
+        grid = grid.step()
+        func EngineNotification() {
+            gv.setNeedsDisplay()
+        }
         
 
     }

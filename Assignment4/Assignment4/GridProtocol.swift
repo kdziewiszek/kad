@@ -8,11 +8,18 @@
 
 import Foundation
 
+typealias Position = (row:Int, col:Int)
+
 protocol GridProtocol {
-    var _rows: UInt { get }
-    var _cols: UInt { get }
-    init(_rows:UInt, _cols:UInt)
-    func neighbors(row: Int, col:Int) -> [(row:Int, col:Int)]
-    subscript(row: UInt, col: UInt) -> CellState? { get set }
+    var grid : [[CellState]]! {get set}
+    var cells: [Cell]! {get set}
+    //var row: Int { get }
+    //var col: Int { get }
+    var _rows: Int { get }
+    var _cols: Int { get }
+    init(_rows rows: Int, _cols cols: Int, cellInitializer: CellInitializer)
+    func neighbors(pos: Position) -> [Position]
+    func livingNeighbors(cell: Cell) -> Int
+    subscript(row: Int, col: Int) -> CellState? { get set }
 
 }

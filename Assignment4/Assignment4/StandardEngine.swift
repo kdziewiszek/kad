@@ -11,6 +11,7 @@ import Foundation
 
 class StandardEngine : EngineProtocol {
     
+    
     var delegate: EngineDelegate?
     
     var grid: GridProtocol!
@@ -25,7 +26,7 @@ class StandardEngine : EngineProtocol {
                 refreshTimer = NSTimer.scheduledTimerWithTimeInterval(refreshRate,
                                                                target: self,
                                                                selector: sel,
-                                                               userInfo: [],
+                                                               userInfo: ["knownKey", Grid.self],
                                                                repeats: true
                 )
             }
@@ -36,28 +37,42 @@ class StandardEngine : EngineProtocol {
         }
     }
     
-    var rows: UInt
-    var cols: UInt
+    var rows: Int
+    var cols: Int
+    var cells: [Cell]!
     
     
     
-    required init (_rows : UInt, _cols : UInt)
+    required init (_rows : Int, _cols : Int)
     {
-        self.rows = _rows
-        self.cols = _cols
-        self.grid = Grid(_rows: _rows, _cols: _cols)
-        
-        
+        rows = _rows
+        cols = _cols
+        grid = Grid(_rows: self.rows, _cols: self.cols) { arc4random_uniform(3) == 1 ? .living : .empty }
         
         
     }
-    
-    
+    //grid = Grid(_rows: rows,_cols: cols) { arc4random_uniform(3) == 1 ? .living : .empty }
     
     func step() -> GridProtocol {
+       
+        let newGr = Grid(_rows: self.rows, _cols: self.cols) { .empty }
         
-        var newGr = Grid(_rows: grid._rows, _cols: grid._cols)
-        for row in 0..<grid._rows {
+        newGr.cells = cells.map{
+            switch grid.livingNeighbors($0){
+            case 2 where $0.state.isLiving(),
+            3 where $0.state.isLiving():
+                return Cell($0.position, .living)
+            case 3 where !$0.state.isLiving():
+                return Cell($0.position, .born)
+            case _ where $0.state.isLiving():
+                return Cell($0.position, .died)
+            default:
+                return Cell($0.position, .empty)
+            }
+            
+        }
+        
+        /*for row in 0..<grid._rows {
             for col in 0..<grid._cols{
                 var numOfN = 0
                 //get the neighbors
@@ -66,7 +81,7 @@ class StandardEngine : EngineProtocol {
                 //implement the rules
                 //take care of born to living
                 //died to empty
-                var nhs = grid.neighbors(Int(row), col: Int(col))
+                let nhs = grid.neighbors(Position)
                 var a1: Int = 0
                 var a2:Int = 0
                 
@@ -75,7 +90,7 @@ class StandardEngine : EngineProtocol {
                     a2=element.col
                     
                     
-                    if (grid[UInt(a1),UInt(a2)] == CellState.living){
+                    if (grid[a1,a2] == CellState.living){
                         numOfN += 1
                         
                     }
@@ -84,34 +99,34 @@ class StandardEngine : EngineProtocol {
                 
                 if (numOfN < 2)
                 {
-                    newGr[UInt(a1),UInt(a2)] = CellState.empty
+                    newGr[a1,a2] = CellState.empty
                 }
                 
                 
-                if (numOfN == 2 && grid[UInt(a1),UInt(a2)] == CellState.living)
+                if (numOfN == 2 && grid[a1,a2] == CellState.living)
                 {
-                    newGr[UInt(a1),UInt(a2)] = CellState.living
+                    newGr[a1,a2] = CellState.living
                 }
                 
-                if (numOfN == 3 && grid[UInt(a1),UInt(a2)] == CellState.living)
+                if (numOfN == 3 && grid[a1,a2] == CellState.living)
                 {
-                    newGr[UInt(a1),UInt(a2)] = CellState.living
+                    newGr[a1,a2] = CellState.living
                 }
                 
-                if (numOfN > 3 && grid[UInt(a1),UInt(a2)] == CellState.living)
+                if (numOfN > 3 && grid[a1,a2] == CellState.living)
                 {
-                    newGr[UInt(a1),UInt(a2)] = CellState.empty
+                    newGr[a1,a2] = CellState.empty
                 }
-                if (numOfN == 3 && grid[UInt(a1),UInt(a2)] == CellState.empty)
+                if (numOfN == 3 && grid[a1,a2] == CellState.empty)
                 {
-                    newGr[UInt(a1),UInt(a2)] = CellState.living
+                    newGr[a1,a2] = CellState.living
                 }
                 
                 
             }
 
                 
-            }
+            }*/
 
 
         return newGr
@@ -137,12 +152,11 @@ class StandardEngine : EngineProtocol {
 
     
     @objc func timerDidFire(refreshTimer:NSTimer) {
-        step()
         let center = NSNotificationCenter.defaultCenter()
         let n = NSNotification(name: "EngineNotification",
                                object: nil
                                )
-//        center.postNotification(n)
+        center.postNotification(n)
         center.postNotificationName("EngineNotification", object: nil, userInfo: ["knownKey" : Grid.self])
         //statistics need to be listening might need some helper functions would be good
         //

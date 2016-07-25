@@ -19,4 +19,6 @@ class StatisticsViewController: UIViewController {
     
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "actOnSpecialNotification", name: "EngineNotification", object: nil)
     }
+    
+    
 }

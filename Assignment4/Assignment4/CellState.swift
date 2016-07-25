@@ -8,34 +8,19 @@
 
 import Foundation
 
-enum CellState: String {
-    case living = "living"
-    case empty = "empty"
-    case born = "born"
-    case died = "died"
-    
-    
-    //method
-    func description()-> String {
-        switch(self) {
-        case .living:
-            return CellState.living.rawValue
-        case .empty:
-            return CellState.empty.rawValue
-        case .born:
-            return CellState.born.rawValue
-        case .died:
-            return CellState.died.rawValue
-            
-        }//end switch
-    }//end method
-    
-    func allValues()-> [CellState]{
-        
-        let cellStates_array: [CellState] = [.living, .empty, .born, .died]
-        
-        return cellStates_array
-    }//end method
+enum CellState {
+    case empty
+    case died
+    case born
+    case living
+    func isLiving() -> Bool {
+        switch self {
+        case .living, .born: return true
+        case .died, .empty: return false
+        }
+    }
+
+
     
     func toggle(value:CellState)-> CellState{
         switch (self) {
@@ -51,3 +36,16 @@ enum CellState: String {
         }
     }// end toggle
 }
+
+struct Cell {
+    var position:Position
+    var state:   CellState
+    init( _ position: Position, _ state: CellState) {
+        self.position = position
+        self.state = state
+    }
+}
+
+
+
+typealias CellInitializer = () -> CellState
