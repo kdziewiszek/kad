@@ -26,18 +26,26 @@ import UIKit
     
     var columns = StandardEngine.sharedInstance.cols
     
-//    var points:[(Int,Int)]{
-//        get{
-//            return drawGrid.cells.filter({$0.state.isLiving() == true})
-//        }
-//        set{
-//            for p in points.enumerate(){
-//                drawGrid[p.element] = .Alive
-//            }
-//        }
-//    }
+    var points:[(Int,Int)]{
+        get{
+            var livingPoints: [(Int,Int)] = []
+            for l in drawGrid.cells{
+                if l.state.isLiving()
+                {
+                    livingPoints.append((l.position.row,l.position.col))
+                }
+            }
+            self.points = livingPoints
+            return self.points
+        }
+        set{
+            for p in points.enumerate(){
+                drawGrid[p.element] = CellState.Alive
+            }
+        }
+    }
     
-        
+    
     @IBInspectable var fillColor: UIColor = UIColor.greenColor()
     @IBInspectable var livingColor: UIColor = UIColor.greenColor()
     @IBInspectable var emptyColor: UIColor = UIColor.whiteColor()
