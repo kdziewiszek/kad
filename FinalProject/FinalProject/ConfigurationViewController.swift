@@ -10,8 +10,9 @@ import UIKit
 
 class ConfigurationViewController: UITableViewController {
 
-    private var configs = [""]
+    private var configs: [String] = []
     var gridview = GridView()
+    var pnts: [(Int,Int)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,9 @@ class ConfigurationViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return configs.count
+        
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -52,12 +55,33 @@ class ConfigurationViewController: UITableViewController {
         let fetcher = Fetcher()
         fetcher.requestJSON(url) { (json, message) in
             let op = NSBlockOperation {
+                print(message)
                 if let jArray = json as? [[String: AnyObject]]{
                     for j in jArray{
+                        var pnt: (Int,Int)
                         if let title = j["title"] as? String{
                             self.configs.append(title)
-                            print(self.configs)
+                            self.tableView.reloadData()
+                            if let contents = j["contents"] as? NSArray{
+                                for c in contents{
+                                    if let x = c[0] as? Int{
+
+                                    if let y = c[1] as? Int{
+                                    
+                                    
+                                    pnt = (x,y)
+                                    self.pnts.append(pnt)
+                                        }
+                                    }
+                                }
+                                self.gridview.points = self.pnts
+                                print(self.gridview.points)
+                                // notify edit view
+                                
+                            }
+                            //self.gridview.points.removeAll()
                         }
+                        
                     }
                 }
                 }

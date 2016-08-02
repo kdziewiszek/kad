@@ -14,8 +14,6 @@ class SimulationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //view.addSubview(gv)
-        
         
     }
     
@@ -27,8 +25,6 @@ class SimulationViewController: UIViewController {
         StandardEngine.sharedInstance.step()
         let n = NSNotificationCenter.defaultCenter()
         n.addObserver(self, selector: #selector(notificationReceived), name: "EngineNotification", object: nil)
-        print(StandardEngine.sharedInstance.grid.cells)
-        gridview.setNeedsDisplay()
     }
     
     

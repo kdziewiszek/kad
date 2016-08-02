@@ -26,22 +26,18 @@ import UIKit
     
     var columns = StandardEngine.sharedInstance.cols
     
-    var points:[(Int,Int)]{
-        get{
-            var livingPoints: [(Int,Int)] = []
-            for l in drawGrid.cells{
-                if l.state.isLiving()
-                {
-                    livingPoints.append((l.position.row,l.position.col))
-                }
-            }
-            self.points = livingPoints
-            return self.points
-        }
+    var points:[(Int,Int)] = []
+        
+    var pnts:[(Int,Int)] {
+
         set{
             for p in points.enumerate(){
                 drawGrid[p.element] = CellState.Alive
             }
+        }
+        
+        get{
+            return points
         }
     }
     
