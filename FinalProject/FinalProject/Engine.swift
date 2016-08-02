@@ -18,40 +18,6 @@ enum CellState {
 
 typealias Cell = (position: Position, state: CellState)
 
-protocol GridProtocol {
-    var rows: Int { get }
-    var cols: Int { get }
-    var cells: [Cell] { get  set}
-    
-    var living: Int { get }
-    var dead:   Int { get }
-    var alive:  Int { get }
-    var born:   Int { get }
-    var died:   Int { get }
-    var empty:  Int { get }
-    
-    subscript (i:Int, j:Int) -> CellState { get set }
-    
-    func neighbors(pos: Position) -> [Position]
-    func livingNeighbors(position: Position) -> Int
-}
-
-protocol  EngineDelegate: class {
-    func engineDidUpdate(withGrid: GridProtocol)
-}
-
-protocol EngineProtocol {
-    var rows: Int { get set }
-    var cols: Int { get set }
-    var grid: GridProtocol { get }
-    weak var delegate: EngineDelegate? { get set }
-    
-    var refreshRate:  Double { get set }
-    var refreshTimer: NSTimer? { get set }
-    
-    func step() -> GridProtocol
-}
-
 typealias CellInitializer = (Position) -> CellState
 
 class StandardEngine: EngineProtocol {

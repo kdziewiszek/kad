@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A0384D51D51260900172ABC /* GridProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0384D41D51260900172ABC /* GridProtocol.swift */; };
+		3A0384D71D51263E00172ABC /* EngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0384D61D51263E00172ABC /* EngineProtocol.swift */; };
+		3A0384D91D51268600172ABC /* EngineDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0384D81D51268600172ABC /* EngineDelegateProtocol.swift */; };
 		3A5B2A091D4D9D5E0027AD44 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5B2A081D4D9D5E0027AD44 /* Fetcher.swift */; };
 		FB97CDD51D441B610022CC4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB97CDD41D441B610022CC4A /* AppDelegate.swift */; };
 		FB97CDD71D441B610022CC4A /* InstrumentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB97CDD61D441B610022CC4A /* InstrumentationViewController.swift */; };
@@ -32,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A0384D41D51260900172ABC /* GridProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridProtocol.swift; sourceTree = "<group>"; };
+		3A0384D61D51263E00172ABC /* EngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineProtocol.swift; sourceTree = "<group>"; };
+		3A0384D81D51268600172ABC /* EngineDelegateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineDelegateProtocol.swift; sourceTree = "<group>"; };
 		3A5B2A081D4D9D5E0027AD44 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		FB97CDD11D441B610022CC4A /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB97CDD41D441B610022CC4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +104,9 @@
 				FB97CDFC1D443A450022CC4A /* ConfigurationEditorViewController.swift */,
 				FB97CDFE1D443A8D0022CC4A /* GridView.swift */,
 				FB97CDF61D44249F0022CC4A /* Engine.swift */,
+				3A0384D81D51268600172ABC /* EngineDelegateProtocol.swift */,
+				3A0384D61D51263E00172ABC /* EngineProtocol.swift */,
+				3A0384D41D51260900172ABC /* GridProtocol.swift */,
 				FB97CDDA1D441B610022CC4A /* Main.storyboard */,
 				FB97CDDD1D441B610022CC4A /* Assets.xcassets */,
 				FB97CDDF1D441B610022CC4A /* LaunchScreen.storyboard */,
@@ -216,9 +225,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A0384D71D51263E00172ABC /* EngineProtocol.swift in Sources */,
 				FB97CDD91D441B610022CC4A /* SimulationViewController.swift in Sources */,
+				3A0384D91D51268600172ABC /* EngineDelegateProtocol.swift in Sources */,
 				FB97CDF91D4424C90022CC4A /* StatisticsViewController.swift in Sources */,
 				FB97CDFF1D443A8D0022CC4A /* GridView.swift in Sources */,
+				3A0384D51D51260900172ABC /* GridProtocol.swift in Sources */,
 				FB97CDF71D44249F0022CC4A /* Engine.swift in Sources */,
 				FB97CDFD1D443A450022CC4A /* ConfigurationEditorViewController.swift in Sources */,
 				FB97CDD51D441B610022CC4A /* AppDelegate.swift in Sources */,
