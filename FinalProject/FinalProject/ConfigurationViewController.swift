@@ -75,7 +75,7 @@ class ConfigurationViewController: UITableViewController {
                                     }
                                 }
                                 self.gridview.points = self.pnts
-                                print(self.gridview.points)
+                                //print(self.gridview.points)
                                 // notify edit view
                                 
                             }

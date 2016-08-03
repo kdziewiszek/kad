@@ -43,7 +43,29 @@ class StandardEngine: EngineProtocol {
     
     weak var delegate: EngineDelegate?
     
-    var refreshRate:  Double = 0.0
+    var timerisSet: Bool = false
+    
+    var refreshRate:  Double = 0.0 {
+        didSet {
+            refreshTimer?.invalidate()
+            
+            if refreshRate != 0 && timerisSet == true{
+                if let refreshTimer = refreshTimer { refreshTimer.invalidate() }
+                let sel = #selector(StandardEngine.timerDidFire(_:))
+                refreshTimer = NSTimer.scheduledTimerWithTimeInterval(refreshRate,
+                                                                      target: self,
+                                                                      selector: sel,
+                                                                      userInfo: ["grid", grid as! Grid],
+                                                                      repeats: true
+                )
+            }
+            else if let refreshTimer = refreshTimer{
+                refreshTimer.invalidate()
+                self.refreshTimer = nil
+            }
+        }
+    }
+
     var refreshTimer: NSTimer?
     
     subscript (i:Int, j:Int) -> CellState {
@@ -85,6 +107,12 @@ class StandardEngine: EngineProtocol {
                                                                   
                                                                   object: nil,
                                                                   userInfo: ["grid": grid as! Grid])
+    }
+    
+    @objc func timerDidFire(refreshTimer:NSTimer) {
+
+        NSNotificationCenter.defaultCenter().postNotificationName("timeNotification", object: nil, userInfo: ["grid" : grid as! Grid])
+        
     }
     
 }

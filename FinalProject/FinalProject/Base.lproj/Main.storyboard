@@ -58,25 +58,53 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="EOc-f5-LBa"/>
                                             <constraint firstAttribute="height" constant="30" id="g4z-gW-qTs"/>
                                         </constraints>
-                                        <state key="normal" title="Run"/>
+                                        <state key="normal" title="Run">
+                                            <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="RunBtn:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="jHk-YH-ppB"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjQ-mt-K9C">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="Save"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVG-7j-KTs">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="aVG-7j-KTs" firstAttribute="top" secondItem="jjQ-mt-K9C" secondAttribute="top" id="0uR-40-7lp"/>
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="height" relation="lessThanOrEqual" secondItem="n6y-74-cnZ" secondAttribute="height" multiplier="0.8" id="B1d-Rt-Qbs"/>
                                     <constraint firstItem="MLW-BI-DYJ" firstAttribute="top" secondItem="n6y-74-cnZ" secondAttribute="top" constant="8" id="HQC-aw-5bm">
                                         <variation key="heightClass=regular-widthClass=compact" constant="50"/>
                                     </constraint>
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="width" relation="lessThanOrEqual" secondItem="n6y-74-cnZ" secondAttribute="width" multiplier="0.8" id="IJ5-wN-Gz0"/>
+                                    <constraint firstItem="MLW-BI-DYJ" firstAttribute="top" secondItem="jjQ-mt-K9C" secondAttribute="top" id="JJL-lP-Ou4"/>
                                     <constraint firstItem="MLW-BI-DYJ" firstAttribute="centerX" secondItem="n6y-74-cnZ" secondAttribute="centerX" id="O53-Ku-eyI"/>
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="centerY" secondItem="n6y-74-cnZ" secondAttribute="centerY" id="eWQ-l5-JEf"/>
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="height" secondItem="n6y-74-cnZ" secondAttribute="height" multiplier="0.8" priority="750" id="fMZ-hS-BCA"/>
+                                    <constraint firstItem="jjQ-mt-K9C" firstAttribute="leading" secondItem="n6y-74-cnZ" secondAttribute="leading" constant="48" id="gIQ-Wq-EsN"/>
+                                    <constraint firstAttribute="trailing" secondItem="aVG-7j-KTs" secondAttribute="trailing" constant="48" id="nlw-h5-HMd"/>
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="centerX" secondItem="n6y-74-cnZ" secondAttribute="centerX" id="ugi-NK-uvF"/>
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="width" secondItem="n6y-74-cnZ" secondAttribute="width" multiplier="0.8" priority="750" id="yGD-85-7c9"/>
                                 </constraints>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="jjQ-mt-K9C"/>
+                                        <include reference="aVG-7j-KTs"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="gIQ-Wq-EsN"/>
+                                        <include reference="JJL-lP-Ou4"/>
+                                        <include reference="0uR-40-7lp"/>
+                                        <include reference="nlw-h5-HMd"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -634,7 +662,7 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="wW7-pf-FIT">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="wW7-pf-FIT">
                                                 <rect key="frame" x="129" y="94" width="94" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="94" id="9cN-zD-bh8">
@@ -654,8 +682,11 @@
                                                         <include reference="i5h-M5-EfI"/>
                                                     </mask>
                                                 </variation>
+                                                <connections>
+                                                    <action selector="stepRows:" destination="xrk-m4-FgQ" eventType="valueChanged" id="7Hl-Es-0p5"/>
+                                                </connections>
                                             </stepper>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="cpT-Zr-qFf">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="cpT-Zr-qFf">
                                                 <rect key="frame" x="129" y="150" width="94" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="94" id="1IO-Xo-5hL">
@@ -679,6 +710,9 @@
                                                         <include reference="cCV-ML-XgV"/>
                                                     </mask>
                                                 </variation>
+                                                <connections>
+                                                    <action selector="stepCols:" destination="xrk-m4-FgQ" eventType="valueChanged" id="vmo-Ip-RRS"/>
+                                                </connections>
                                             </stepper>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Refresh Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6V-1c-5E0">
                                                 <rect key="frame" x="62" y="183" width="101" height="15"/>
@@ -692,7 +726,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Hn-pd-iL0">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8Hn-pd-iL0">
                                                 <rect key="frame" x="88" y="262" width="51" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="49" id="NLA-PV-UcE"/>
@@ -700,6 +734,9 @@
                                                         <variation key="heightClass=compact-widthClass=compact" constant="31"/>
                                                     </constraint>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="time:" destination="xrk-m4-FgQ" eventType="valueChanged" id="OUo-Pi-cTu"/>
+                                                </connections>
                                             </switch>
                                             <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="0.10000000000000001" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="FuI-sP-yej">
                                                 <rect key="frame" x="53" y="206" width="118" height="26"/>
@@ -724,6 +761,9 @@
                                                 <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="53" y="206" width="118" height="26"/>
                                                 </variation>
+                                                <connections>
+                                                    <action selector="refreshChange:" destination="xrk-m4-FgQ" eventType="valueChanged" id="qpT-II-lFH"/>
+                                                </connections>
                                             </slider>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -949,6 +989,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="VKd-QF-2w1"/>
                     <navigationItem key="navigationItem" id="gDW-YP-Umt"/>
+                    <connections>
+                        <outlet property="cols" destination="CTR-E0-JAv" id="lKw-Pe-QzV"/>
+                        <outlet property="rows" destination="2A9-Rx-nFQ" id="4Jm-bm-CuU"/>
+                        <outlet property="sCols" destination="cpT-Zr-qFf" id="Vco-XO-dAX"/>
+                        <outlet property="sRows" destination="wW7-pf-FIT" id="oDc-Id-niO"/>
+                        <outlet property="slide" destination="FuI-sP-yej" id="kJg-uP-SXZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uEm-V0-cAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
