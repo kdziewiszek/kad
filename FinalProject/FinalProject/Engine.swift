@@ -142,9 +142,15 @@ class Grid: GridProtocol {
     
     subscript (i:Int, j:Int) -> CellState {
         get {
+            assert((0..<rows).contains(i) &&
+                (0..<cols).contains(j),
+                   "Subscript [\(i), \(j)] is out of range")
             return cells[i*cols+j].state
         }
         set {
+            assert((0..<rows).contains(i) &&
+                (0..<cols).contains(j),
+                   "Subscript [\(i), \(j)] is out of range")
             cells[i*cols+j].state = newValue
         }
     }

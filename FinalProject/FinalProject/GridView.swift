@@ -26,20 +26,52 @@ import UIKit
     
     var columns = StandardEngine.sharedInstance.cols
     
-    var points:[(Int,Int)] = []
+    
         
-    var pnts:[(Int,Int)] {
+    var points:[Position] {
 
-        set{
-            for p in points.enumerate(){
-                drawGrid[p.element] = CellState.Alive
+        set (newPoints){
+            var maxRows = 0
+            var maxCols = 0
+            
+            // Walk the positions to find max values
+            for (row, col) in newPoints {
+                if row > maxRows {
+                    maxRows = row
+                }
+                if col > maxCols {
+                    maxCols = col
+                }
             }
+            // Think about why you want a higher number
+            rows = maxRows + 1
+            columns = maxCols + 1
+            
+            // Walk the positions to populate
+            for (row, col) in newPoints {
+                drawGrid[row, col] = CellState.Alive
+            }
+            
         }
         
         get{
-            return points
+            var tmpPoints = [Position]()
+            for row in 0..<rows {
+                for col in 0..<columns {
+                    if drawGrid[row, col] == CellState.Alive {
+                        tmpPoints.append((row: row, col: col))
+                    }
+                }
+//            for p in drawGrid.cells.enumerate(){
+//                if p.element.state == .Alive{
+//                    tmpPoints.append(p)
+//                }
+//            }
+            }
+        return tmpPoints
         }
     }
+
     
     
     @IBInspectable var fillColor: UIColor = UIColor.greenColor()
