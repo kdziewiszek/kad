@@ -34,7 +34,6 @@ import UIKit
             var maxRows = 0
             var maxCols = 0
             
-            // Walk the positions to find max values
             for (row, col) in newPoints {
                 if row > maxRows {
                     maxRows = row
@@ -43,11 +42,9 @@ import UIKit
                     maxCols = col
                 }
             }
-            // Think about why you want a higher number
             rows = maxRows + 1
             columns = maxCols + 1
             
-            // Walk the positions to populate
             for (row, col) in newPoints {
                 drawGrid[row, col] = CellState.Alive
             }
@@ -62,11 +59,6 @@ import UIKit
                         tmpPoints.append((row: row, col: col))
                     }
                 }
-//            for p in drawGrid.cells.enumerate(){
-//                if p.element.state == .Alive{
-//                    tmpPoints.append(p)
-//                }
-//            }
             }
         return tmpPoints
         }

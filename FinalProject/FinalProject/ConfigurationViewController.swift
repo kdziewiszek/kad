@@ -12,7 +12,7 @@ class ConfigurationViewController: UITableViewController {
 
     private var configs: [String] = []
     var gridview = GridView()
-    var pnts: [(Int,Int)] = []
+    var pnt: (Position) = (0,0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,25 +74,30 @@ class ConfigurationViewController: UITableViewController {
                 print(message)
                 if let jArray = json as? [[String: AnyObject]]{
                     for j in jArray{
-                        var pnt: (Int,Int)
                         if let title = j["title"] as? String{
                             self.configs.append(title)
                             self.tableView.reloadData()
                             if let contents = j["contents"] as? NSArray{
-                                for c in contents{
-                                    if let x = c[0] as? Int{
-
-                                    if let y = c[1] as? Int{
+                                //did not have time to fix this, need to check max rows and cols before i assign to points
+//                                for c in contents{
+//                                    if let x = c[0] as? Int{
+//                                        if x > position.row{
+//                                            StandardEngine.sharedInstance.rows = x
+//                                        }
+//
+//                                    if let y = c[1] as? Int{
+//                                        if y > StandardEngine.sharedInstance.cols{
+//                                            StandardEngine.sharedInstance.cols = y
+//                                        }
+//                                        self.pnt = (x, y)
+//                                        self.gridview.points.append(self.pnt)
+//                                    
+//                                        }
+//                                    }
+//                                }
+                                NSNotificationCenter.defaultCenter().postNotificationName("redrawGridNotification",
                                     
-                                    
-                                    pnt = (x,y)
-                                    self.pnts.append(pnt)
-                                        }
-                                    }
-                                }
-                                
-                                //self.gridview.points = self.pnts
-                                //print(self.gridview.points)
+                                    object: nil)
                                 // notify edit view
                                 
                             }

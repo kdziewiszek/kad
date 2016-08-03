@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -537,7 +536,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Statistics" id="KBB-GK-HgT"/>
+                    <tabBarItem key="tabBarItem" title="Statistics" image="third" id="KBB-GK-HgT"/>
                     <connections>
                         <outlet property="alive" destination="edB-RW-nh8" id="tZJ-4a-aAQ"/>
                         <outlet property="born" destination="2gJ-gN-0M8" id="AeS-Us-KeY"/>
@@ -994,7 +993,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="VKd-QF-2w1"/>
+                    <tabBarItem key="tabBarItem" title="instrumentation" image="first" id="VKd-QF-2w1"/>
                     <navigationItem key="navigationItem" id="gDW-YP-Umt"/>
                     <connections>
                         <outlet property="cols" destination="CTR-E0-JAv" id="lKw-Pe-QzV"/>
@@ -1127,7 +1126,7 @@
                                     </mask>
                                 </variation>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Ws-Jh-Lc5" userLabel="Name Text Field">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Ws-Jh-Lc5" userLabel="Name Text Field">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="WLY-HT-jho"/>
@@ -1195,6 +1194,12 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="5Be-cN-RVz"/>
+                                <exclude reference="5J9-8c-a9v"/>
+                                <exclude reference="A9R-gX-QSf"/>
+                                <exclude reference="Hy8-bN-omw"/>
+                                <exclude reference="lHd-pb-zgI"/>
+                                <exclude reference="peM-81-1Nw"/>
                                 <exclude reference="BI5-kJ-NHf"/>
                                 <exclude reference="KvL-VL-cTk"/>
                                 <exclude reference="O0u-zf-LYp"/>
@@ -1204,22 +1209,16 @@
                                 <exclude reference="paK-Nk-nto"/>
                                 <exclude reference="tOI-7K-aFN"/>
                                 <exclude reference="i1B-2p-XS0"/>
-                                <exclude reference="5Be-cN-RVz"/>
-                                <exclude reference="5J9-8c-a9v"/>
-                                <exclude reference="A9R-gX-QSf"/>
-                                <exclude reference="Hy8-bN-omw"/>
-                                <exclude reference="lHd-pb-zgI"/>
-                                <exclude reference="peM-81-1Nw"/>
                                 <exclude reference="8yl-Bh-g6z"/>
                                 <exclude reference="egJ-3y-11D"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
+                                <include reference="A9R-gX-QSf"/>
                                 <include reference="Zq9-4k-OA0"/>
                                 <exclude reference="paK-Nk-nto"/>
                                 <exclude reference="tOI-7K-aFN"/>
-                                <include reference="A9R-gX-QSf"/>
                                 <include reference="8yl-Bh-g6z"/>
                                 <exclude reference="egJ-3y-11D"/>
                             </mask>
@@ -1236,13 +1235,6 @@
                                 <include reference="5Ws-Jh-Lc5"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="57T-ee-VgK"/>
-                                <include reference="BI5-kJ-NHf"/>
-                                <include reference="KvL-VL-cTk"/>
-                                <exclude reference="O0u-zf-LYp"/>
-                                <exclude reference="Zq9-4k-OA0"/>
-                                <exclude reference="gFe-nm-sN4"/>
-                                <include reference="6pa-02-p0r"/>
                                 <include reference="Bez-zv-cKs"/>
                                 <include reference="TiN-8p-sFm"/>
                                 <include reference="ddt-7F-WIX"/>
@@ -1252,10 +1244,19 @@
                                 <exclude reference="SfR-Tm-mJl"/>
                                 <include reference="lHd-pb-zgI"/>
                                 <exclude reference="peM-81-1Nw"/>
+                                <exclude reference="57T-ee-VgK"/>
+                                <include reference="BI5-kJ-NHf"/>
+                                <include reference="KvL-VL-cTk"/>
+                                <exclude reference="O0u-zf-LYp"/>
+                                <exclude reference="Zq9-4k-OA0"/>
+                                <exclude reference="gFe-nm-sN4"/>
+                                <include reference="6pa-02-p0r"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
+                                <include reference="Hy8-bN-omw"/>
+                                <exclude reference="SfR-Tm-mJl"/>
                                 <include reference="S2D-C3-K66"/>
                                 <exclude reference="Zq9-4k-OA0"/>
                                 <include reference="6pa-02-p0r"/>
@@ -1264,8 +1265,6 @@
                                 <include reference="iZH-qo-PtK"/>
                                 <include reference="lo6-Cx-az3"/>
                                 <include reference="qUQ-LI-vVm"/>
-                                <include reference="Hy8-bN-omw"/>
-                                <exclude reference="SfR-Tm-mJl"/>
                                 <include reference="YZq-fP-g1A"/>
                             </mask>
                         </variation>
@@ -1279,6 +1278,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="grid" destination="ImU-zt-Ol6" id="UlA-4R-YuU"/>
                         <outlet property="nameconfig" destination="5Ws-Jh-Lc5" id="KpW-Qa-Zep"/>
                     </connections>
                 </viewController>
@@ -1288,6 +1288,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="first" width="58" height="58"/>
         <image name="second" width="30" height="30"/>
+        <image name="third" width="30" height="30"/>
     </resources>
 </document>

@@ -15,6 +15,7 @@ class ConfigurationEditorViewController: UIViewController {
     
     @IBOutlet weak var nameconfig: UITextField!
     
+    @IBOutlet weak var grid: GridView!
     @IBAction func saveConfig(sender: AnyObject) {
         guard let newText = nameconfig.text, commit = commit
             else { return }
@@ -25,7 +26,12 @@ class ConfigurationEditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameconfig.text = name
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(redrawGridNotification), name: "redrawGridNotification", object: nil)
         // Do any additional setup after loading the view.
+    }
+    func redrawGridNotification(notification:NSNotification?){
+       grid.setNeedsDisplay()
+        
     }
 
     override func didReceiveMemoryWarning() {
