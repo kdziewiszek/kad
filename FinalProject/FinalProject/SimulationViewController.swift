@@ -5,16 +5,35 @@ class SimulationViewController: UIViewController, EngineDelegate{
     
     @IBOutlet weak var gridview: GridView!
 
+    @IBAction func save(sender: AnyObject) {
+        notifyTable()
+        
+    }
+    @IBAction func reset(sender: AnyObject) {
+        let emptyGrid = Grid(20, 20)
+        StandardEngine.sharedInstance.grid = emptyGrid
+        gridview.setNeedsDisplay()
+        NSNotificationCenter.defaultCenter().postNotificationName("ResetNotification",
+                                                                  
+                                                                  object: nil,
+                                                                  userInfo: ["grid": emptyGrid ])
+    }
+
     var grid: EngineProtocol!
     
     @IBOutlet weak var runBtn: UIButton!
     
-    
+    func notifyTable() {
+        let saveGrid = StandardEngine.sharedInstance.grid
+        NSNotificationCenter.defaultCenter().postNotificationName("TableNotification",
+                                                                  
+                                                                  object: nil,
+                                                                  userInfo: ["grid": saveGrid as! Grid])
+    }
     
     
     func timerNotification(notification:NSNotification?){
         StandardEngine.sharedInstance.step()
-        print("hi")
         //gridview.setNeedsDisplay()
     }
     override func viewDidLoad() {

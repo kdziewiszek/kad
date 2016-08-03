@@ -17,7 +17,23 @@ class ConfigurationViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchOGConfigs()
+        let n = NSNotificationCenter.defaultCenter()
+        n.addObserver(self, selector: #selector(tableNotification), name: "TableNotification", object: nil)
         // Do any additional setup after loading the view.
+    }
+    @IBAction func addBtn(sender: AnyObject) {
+        configs.append("Add new config...")
+        let itemRow = configs.count - 1
+        let itemPath = NSIndexPath(forRow:itemRow, inSection: 0)
+        tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
+    }
+    
+    func tableNotification(notification:NSNotification?){
+        configs.append("Add new config...")
+        let itemRow = configs.count - 1
+        let itemPath = NSIndexPath(forRow:itemRow, inSection:0)
+        tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,7 +90,8 @@ class ConfigurationViewController: UITableViewController {
                                         }
                                     }
                                 }
-                                self.gridview.points = self.pnts
+                                
+                                //self.gridview.points = self.pnts
                                 //print(self.gridview.points)
                                 // notify edit view
                                 
@@ -89,6 +106,21 @@ class ConfigurationViewController: UITableViewController {
         }
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let editingRow = (sender as! UITableViewCell).tag
+        let editingString = configs[editingRow]
+        guard let editingVC = segue.destinationViewController as? ConfigurationEditorViewController
+            else{
+                preconditionFailure("Something bad happened")
+        }
+        editingVC.name = editingString
+        editingVC.commit = {
+            self.configs[editingRow] = $0
+            let indexPath = NSIndexPath(forRow: editingRow, inSection: 0)
+            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+    }
     /*
     // MARK: - Navigation
 

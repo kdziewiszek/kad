@@ -9,10 +9,22 @@
 import UIKit
 
 class ConfigurationEditorViewController: UIViewController {
-
+    
+    var name:String?
+    var commit: (String -> Void)?
+    
+    @IBOutlet weak var nameconfig: UITextField!
+    
+    @IBAction func saveConfig(sender: AnyObject) {
+        guard let newText = nameconfig.text, commit = commit
+            else { return }
+        commit(newText)
+        navigationController!.popViewControllerAnimated(true)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nameconfig.text = name
         // Do any additional setup after loading the view.
     }
 
